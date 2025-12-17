@@ -22,13 +22,11 @@ def evaluate_models(X_train, y_train,X_test,y_test,models):
 
         for i in range(len(list(models))):
             model = list(models.values())[i]
-           
-           
             
             model.fit(X_train,y_train)
+            ##model.fit(X_train,y_train) #Train model
 
-            #model.fit(X_train, y_train)  # Train model
-
+           
             y_train_pred = model.predict(X_train)
 
             y_test_pred = model.predict(X_test)
