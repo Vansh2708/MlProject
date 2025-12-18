@@ -20,6 +20,18 @@ class PredictPipeline:
 
 class CustomData:
     def __init__(self, gender:str, race_ethnicity:str, parental_level_of_education:str, lunch:str, test_preparation_course:str, reading_score:int, writing_score:int):
+        categorical_values = {
+            "gender": gender,
+            "race_ethnicity": race_ethnicity,
+            "parental_level_of_education": parental_level_of_education,
+            "lunch": lunch,
+            "test_preparation_course": test_preparation_course
+        }
+
+        for key, value in categorical_values.items():
+            if value is None or value == "":
+                raise ValueError(f"{key} cannot be empty or None")
+
         self.gender = gender
         self.race_ethnicity = race_ethnicity
         self.parental_level_of_education = parental_level_of_education
@@ -27,6 +39,7 @@ class CustomData:
         self.test_preparation_course = test_preparation_course
         self.reading_score = int(reading_score)
         self.writing_score = int(writing_score)
+
     def get_data_as_data_frame(self):
         try:
             custom_data_input_dict = {
